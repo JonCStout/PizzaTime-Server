@@ -96,25 +96,25 @@
                     "street1": {
                         "type": "string",
                         "maxLength": 50,
-                        "pattern": "(\\w \\.,')*",
+                        "pattern": "^[\\w \\.,']*$",
                         "description": "Street address must be no more than 50 characters and contain alphanumerics or these symbols:  .,'"
                     },
                     "street2": {
                         "type": "string",
                         "maxLength": 50,
-                        "pattern": "(\\w \\.,')*",
+                        "pattern": "^[\\w \\.,']*$",
                         "description": "Street address (line 2) must be no more than 50 characters and contain alphanumerics or these symbols:  .,'"
                     },
                     "city": {
                         "type": "string",
                         "maxLength": 50,
-                        "pattern": "(\\w \\.')*",
-                        "description": "City must be no more than 50 characters, must start with an alphanumeric, and otherwise contain only alphanumerics or these symbols: .'"
+                        "pattern": "^[\\w \\.,']*$",
+                        "description": "City must be no more than 50 characters, must start with an alphanumeric, and otherwise contain only alphanumerics or these symbols: .,'"
                     },
                     "state": {
                         "type": "string",
                         "maxLength": 20,
-                        "pattern": "(\\w \\.)*",
+                        "pattern": "^[\\w \\.']*$",
                         "description": "State  must be no more than 20 characters, must start with an alphanumeric, and otherwise contain only alphanumerics or these symbols: .'"
                     },
                     "zip": {

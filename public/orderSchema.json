@@ -17,10 +17,10 @@
                 "city": "",
                 "state": "UT",
                 "zip": "55555-4444"
-
             },
             "orderItems": [
                 {
+                    "productId": 789,
                     "orderType": "pizza",
                     "itemName": "Hawaiian",
                     "size": "Large",
@@ -28,6 +28,7 @@
                     "pricePerItem": 12
                 },
                 {
+                    "productId": 345,
                     "orderType": "drink",
                     "itemName": "Coke",
                     "size": "Small",
@@ -35,18 +36,21 @@
                     "pricePerItem": 1.5
                 },
                 {
+                    "productId": 654,
                     "orderType": "sides",
                     "itemName": "Breadsticks",
                     "quantity": 1,
                     "pricePerItem": 5.99
                 },
                 {
+                    "productId": 567,
                     "orderType": "coupons",
                     "itemName": "July2019Promo",
                     "quantity": 1,
                     "pricePerItem": -3.0
                 },
                 {
+                    "productId": 678,
                     "orderType": "fees",
                     "itemName": "Delivery Charge",
                     "quantity": 1,
@@ -80,13 +84,13 @@
                     "type": "string",
                     "maxLength": 30,
                     "pattern": "^[\\w \\.,']*$",
-                    "description": "First name must be no more than 30 characters, may contain spaces, and can only contain alphanumerics or these symbols:  ,.'"
+                    "description": "First name must be no more than 30 characters, may contain spaces, and can only contain alphanumerics or these symbols:  _,.'"
                 },
                 "lastName": {
                     "type": "string",
                     "maxLength": 30,
                     "pattern": "^[\\w \\.,']*$",
-                    "description": "Last name must be no more than 30 characters, may contain spaces, and can only contain alphanumerics or these symbols:  ,.'"
+                    "description": "Last name must be no more than 30 characters, may contain spaces, and can only contain alphanumerics or these symbols:  _,.'"
                 },
                 "phone": {
                     "type": "string",
@@ -110,26 +114,26 @@
                 "street1": {
                     "type": "string",
                     "maxLength": 50,
-                    "pattern": "(\\w \\.,')*",
-                    "description": "Street address must be no more than 50 characters and contain alphanumerics or these symbols:  .,'"
+                    "pattern": "^[\\w \\.,']*$",
+                    "description": "Street address must be no more than 50 characters and contain alphanumerics or these symbols:  _.,'"
                 },
                 "street2": {
                     "type": "string",
                     "maxLength": 50,
-                    "pattern": "(\\w \\.,')*",
-                    "description": "Street address (line 2) must be no more than 50 characters and contain alphanumerics or these symbols:  .,'"
+                    "pattern": "^[\\w \\.,']*$",
+                    "description": "Street address (line 2) must be no more than 50 characters and contain alphanumerics or these symbols:  _.,'"
                 },
                 "city": {
                     "type": "string",
                     "maxLength": 50,
-                    "pattern": "(\\w \\.')*",
-                    "description": "City must be no more than 50 characters, must start with an alphanumeric, and otherwise contain only alphanumerics or these symbols: .'"
+                    "pattern": "^[\\w \\.,']*$",
+                    "description": "City must be no more than 50 characters, must start with an alphanumeric, and otherwise contain only alphanumerics or these symbols: _.'"
                 },
                 "state": {
                     "type": "string",
                     "maxLength": 20,
-                    "pattern": "(\\w \\.)*",
-                    "description": "State  must be no more than 20 characters, must start with an alphanumeric, and otherwise contain only alphanumerics or these symbols: .'"
+                    "pattern": "^[\\w \\.']*$",
+                    "description": "State  must be no more than 20 characters, must start with an alphanumeric, and otherwise contain only alphanumerics or these symbols: _.'"
                 },
                 "zip": {
                     "type": "string",
@@ -146,36 +150,42 @@
             "uniqueItems": true,
             "items": {
                 "type": "object",
-                "required": [ "orderType", "itemName", "quantity", "pricePerItem"],
+                "required": [ "productId", "orderType", "itemName", "quantity", "pricePerItem"],
                 "additionalProperties": false,
                 "properties": {
+                    "productId": {
+                        "type": "integer",
+                        "description": "productId must be an integer"
+                    },
                     "orderType": {
                         "type": "string",
                         "maxLength": 50,
-                        "pattern": "(\\w \\.,')*",
-                        "description": "Order type must be no more than 50 characters and contain alphanumerics or these symbols:  .,'"
+                        "pattern": "^[\\w \\.,']*$",
+                        "description": "Order type must be no more than 50 characters and contain alphanumerics or these symbols:  _.,'"
                     },
                     "itemName": {
                         "type": "string",
                         "maxLength": 50,
-                        "pattern": "(\\w \\.,')*",
-                        "description": "Item's name must be no more than 50 characters and contain alphanumerics or these symbols:  .,'"
+                        "pattern": "^[\\w \\.,']*$",
+                        "description": "Item's name must be no more than 50 characters and contain alphanumerics or these symbols:  _.,'"
                     },
                     "size": {
                         "type": "string",
                         "maxLength": 20,
-                        "pattern": "(\\w \\.,')*",
-                        "description": "Item's size must be no more than 20 characters and contain alphanumerics or these symbols:  .,'"
+                        "pattern": "^[\\w \\.,']*$",
+                        "description": "Item's size must be no more than 20 characters and contain alphanumerics or these symbols:  _.,'"
                     },
                     "quantity": {
                         "type": "integer",
                         "minimum": 1,
-                        "maximum": 1000
+                        "maximum": 1000,
+                        "description": "quantity must be an integer from 1 to 1000"
                     },
                     "pricePerItem": {
                         "type": "number",
                         "minimum": -1000,
-                        "maximum": 1000
+                        "maximum": 1000,
+                        "description": "pricePerItem must be a number between -1000 and +1000"
                     }
                 }
             }
